@@ -1,0 +1,123 @@
+/* config cp */
+
+/* === VARIABLES === */
+:root {
+  --color-primary: #43a047;
+  --color-primary-light: #66bb6a;
+  --color-primary-dark: #2e7d32;
+
+  --color-accent: #a5d6a7;
+  --color-accent-light: #c8e6c9;
+  --color-accent-dark: #81c784;
+
+  --color-background: #f5f5f5;
+  --color-success: #4caf50;
+  --color-warning: #ff9800;
+  --color-error: #f44336;
+
+  --font-sans: "Inter", system-ui, Avenir, Helvetica, Arial, sans-serif;
+
+  --spacing-18: 4.5rem;
+  --spacing-88: 22rem;
+}
+
+/* === GLOBAL STYLES === */
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-background);
+  margin: 0;
+  padding: 0;
+}
+
+.bg-gradient {
+  background-image: linear-gradient(to right, var(--color-accent-light));
+  /* background-color: var(--color-accent-light); */
+}
+
+.bg-gradient2 {
+  background-image: linear-gradient(
+    to right,
+    var(--color-primary),
+    var(--color-primary-light)
+  );
+}
+
+.bg-background {
+  background-color: var(--color-background);
+}
+
+/* === ANIMATIONS === */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes bounceGentle {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* === ANIMATION CLASSES === */
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.slide-up {
+  animation: slideUp 0.3s ease-out;
+}
+
+.bounce-gentle {
+  animation: bounceGentle 0.6s ease-in-out;
+}
+
+/* === OPTIONAL UTILITIES (LIKE TAILWIND SPACING) === */
+.p-18 {
+  padding: var(--spacing-18);
+}
+.mt-88 {
+  margin-top: var(--spacing-88);
+}
+
+/* === EXAMPLE UTILITY COLORS === */
+.text-primary {
+  color: var(--color-primary);
+}
+.bg-primary {
+  background-color: var(--color-primary);
+}
+
+.text-success {
+  color: var(--color-success);
+}
+.bg-success {
+  background-color: var(--color-success);
+}
+
+.text-error {
+  color: var(--color-error);
+}
+.bg-error {
+  background-color: var(--color-error);
+}
+
+/*  */

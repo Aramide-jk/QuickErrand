@@ -1,0 +1,145 @@
+@import "tailwindcss";
+
+/* === Colors === */
+:root {
+  --color-primary: #43a047;
+  --color-primary-light: #66bb6a;
+  --color-primary-dark: #2e7d32;
+
+  --color-accent: #a5d6a7;
+  --color-accent-light: #c8e6c9;
+  --color-accent-dark: #81c784;
+
+  --color-background: #f5f5f5;
+  --color-success: #4caf50;
+  --color-warning: #ff9800;
+  --color-error: #f44336;
+
+  --font-sans: "Inter", system-ui, Avenir, Helvetica, Arial, sans-serif;
+
+  --spacing-18: 4.5rem;
+  --spacing-88: 22rem;
+}
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: light;
+  color: #213547;
+  background-color: #ffffff;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* === Buttons === */
+.gradient-bg {
+  background-image: linear-gradient(to bottom right, #c8e6c9, #ffffff, #c8e6c9);
+}
+.gradient2 {
+  background-image: linear-gradient(to bottom right, #43a047, #66bb6a);
+}
+.primary {
+  background-color: #43a047;
+}
+
+.btn-primary {
+  background-color: #43a047;
+  color: white;
+  font-weight: 500;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+}
+.btn-primary:hover {
+  background-color: #2e7d32;
+}
+.btn-primary:active {
+  transform: scale(0.95);
+}
+
+.btn-secondary {
+  border: 2px solid #43a047;
+  color: #43a047;
+  background-color: transparent;
+  font-weight: 500;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+}
+.btn-secondary:hover {
+  background-color: #43a047;
+  color: white;
+}
+
+.btn-google {
+  background-color: white;
+  border: 1px solid #d1d5db;
+  color: #374151;
+  font-weight: 500;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.btn-google:hover {
+  background-color: #f9fafb;
+}
+
+/* === Input Fields === */
+.input-field {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+}
+.input-field:focus {
+  outline: none;
+  border-color: transparent;
+  box-shadow: 0 0 0 2px #43a047;
+}
+
+/* === Cards === */
+.card {
+  background-color: white;
+  border-radius: 0.75rem;
+  border: 1px solid #f3f4f6;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+.category-card {
+  background-color: white;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  border: 1px solid #f3f4f6;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+.category-card:hover {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-color: #43a047;
+}
