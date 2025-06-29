@@ -1,34 +1,35 @@
-import { useState, useEffect } from 'react';
-import { Link, useNavigate, useSearchParams } from 'react-router-dom';
-import { ArrowLeft, MapPin, Clock, DollarSign, CreditCard } from 'lucide-react';
+import { useState, useEffect } from "react";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
+import { ArrowLeft, MapPin, Clock, DollarSign, CreditCard } from "lucide-react";
+import { FaNairaSign } from "react-icons/fa6";
 
 const PostErrand = () => {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
-  const categoryFromUrl = searchParams.get('category');
+  const categoryFromUrl = searchParams.get("category");
 
   const [formData, setFormData] = useState({
-    serviceType: categoryFromUrl || '',
-    itemName: '',
-    description: '',
-    pickupAddress: '',
-    deliveryAddress: '',
-    preferredTime: 'asap',
-    scheduledTime: '',
-    itemPrice: '',
-    runnerFee: '500',
-    paymentMethod: 'pay-now'
+    serviceType: categoryFromUrl || "",
+    itemName: "",
+    description: "",
+    pickupAddress: "",
+    deliveryAddress: "",
+    preferredTime: "asap",
+    scheduledTime: "",
+    itemPrice: "",
+    runnerFee: "500",
+    paymentMethod: "pay-now",
   });
 
   const [isLoading, setIsLoading] = useState(false);
 
   const serviceTypes = {
-    grocery: 'Grocery Shopping',
-    pharmacy: 'Pharmacy Pickup',
-    queue: 'Queue Services',
-    bills: 'Bill Payment',
-    delivery: 'Pickup/Delivery',
-    custom: 'Custom Errand'
+    grocery: "Grocery Shopping",
+    pharmacy: "Pharmacy Pickup",
+    queue: "Queue Services",
+    bills: "Bill Payment",
+    delivery: "Pickup/Delivery",
+    custom: "Custom Errand",
   };
 
   const calculateTotal = () => {
@@ -40,7 +41,7 @@ const PostErrand = () => {
   const handleChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
@@ -51,7 +52,7 @@ const PostErrand = () => {
     // Simulate API call
     setTimeout(() => {
       setIsLoading(false);
-      navigate('/requests');
+      navigate("/requests");
     }, 2000);
   };
 
@@ -60,10 +61,14 @@ const PostErrand = () => {
       {/* Header */}
       <div className="bg-white shadow-sm">
         <div className="flex items-center p-6">
-          <Link to="/home" className="p-2 hover:bg-gray-100 rounded-full transition-colors mr-4">
+          <Link
+            to="/home"
+            className="p-2 hover:bg-gray-100 rounded-full transition-colors mr-4">
             <ArrowLeft className="w-6 h-6 text-gray-600" />
           </Link>
-          <h1 className="text-xl font-semibold text-gray-800">Post New Errand</h1>
+          <h1 className="text-xl font-semibold text-gray-800">
+            Post New Errand
+          </h1>
         </div>
       </div>
 
@@ -78,11 +83,12 @@ const PostErrand = () => {
             value={formData.serviceType}
             onChange={handleChange}
             className="input-field"
-            required
-          >
+            required>
             <option value="">Select Service Type</option>
             {Object.entries(serviceTypes).map(([key, value]) => (
-              <option key={key} value={key}>{value}</option>
+              <option key={key} value={key}>
+                {value}
+              </option>
             ))}
           </select>
         </div>
@@ -119,7 +125,6 @@ const PostErrand = () => {
           />
         </div>
 
-        {/* Pickup Address */}
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">
             Pickup Address
@@ -131,7 +136,7 @@ const PostErrand = () => {
               name="pickupAddress"
               value={formData.pickupAddress}
               onChange={handleChange}
-              className="input-field pl-12"
+              className="input-field2 pl-12"
               placeholder="Enter pickup location"
               required
             />
@@ -150,7 +155,7 @@ const PostErrand = () => {
               name="deliveryAddress"
               value={formData.deliveryAddress}
               onChange={handleChange}
-              className="input-field pl-12"
+              className="input-field2 pl-12"
               placeholder="Enter delivery location"
               required
             />
@@ -168,7 +173,7 @@ const PostErrand = () => {
                 type="radio"
                 name="preferredTime"
                 value="asap"
-                checked={formData.preferredTime === 'asap'}
+                checked={formData.preferredTime === "asap"}
                 onChange={handleChange}
                 className="mr-3 text-primary focus:ring-primary"
               />
@@ -180,7 +185,7 @@ const PostErrand = () => {
                 type="radio"
                 name="preferredTime"
                 value="scheduled"
-                checked={formData.preferredTime === 'scheduled'}
+                checked={formData.preferredTime === "scheduled"}
                 onChange={handleChange}
                 className="mr-3 text-primary focus:ring-primary"
               />
@@ -188,8 +193,8 @@ const PostErrand = () => {
               <span>Schedule for later</span>
             </label>
           </div>
-          
-          {formData.preferredTime === 'scheduled' && (
+
+          {formData.preferredTime === "scheduled" && (
             <div className="mt-3">
               <input
                 type="datetime-local"
@@ -206,20 +211,20 @@ const PostErrand = () => {
         {/* Pricing */}
         <div className="bg-white rounded-xl p-4 border border-gray-200">
           <h3 className="font-medium text-gray-800 mb-4">Pricing</h3>
-          
+
           <div className="space-y-4">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
                 Item Price (₦) - Optional
               </label>
               <div className="relative">
-                <DollarSign className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
+                <FaNairaSign className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
                 <input
                   type="number"
                   name="itemPrice"
                   value={formData.itemPrice}
                   onChange={handleChange}
-                  className="input-field pl-10"
+                  className="input-field2 pl-10"
                   placeholder="0.00"
                   min="0"
                   step="0.01"
@@ -232,13 +237,13 @@ const PostErrand = () => {
                 Runner Fee (₦)
               </label>
               <div className="relative">
-                <DollarSign className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
+                <FaNairaSign className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
                 <input
                   type="number"
                   name="runnerFee"
                   value={formData.runnerFee}
                   onChange={handleChange}
-                  className="input-field pl-10"
+                  className="input-field2 pl-10"
                   placeholder="500"
                   min="100"
                   step="50"
@@ -250,7 +255,10 @@ const PostErrand = () => {
             <div className="border-t pt-4">
               <div className="flex justify-between items-center font-semibold text-lg">
                 <span>Total Budget:</span>
-                <span className="text-primary">₦{calculateTotal().toLocaleString()}</span>
+                <span className="text-primary flex items-center">
+                  <FaNairaSign className="h-4 w-4" />
+                  {calculateTotal().toLocaleString()}
+                </span>
               </div>
             </div>
           </div>
@@ -267,7 +275,7 @@ const PostErrand = () => {
                 type="radio"
                 name="paymentMethod"
                 value="pay-now"
-                checked={formData.paymentMethod === 'pay-now'}
+                checked={formData.paymentMethod === "pay-now"}
                 onChange={handleChange}
                 className="mr-3 text-primary focus:ring-primary"
               />
@@ -279,13 +287,15 @@ const PostErrand = () => {
                 type="radio"
                 name="paymentMethod"
                 value="pay-on-delivery"
-                checked={formData.paymentMethod === 'pay-on-delivery'}
+                checked={formData.paymentMethod === "pay-on-delivery"}
                 onChange={handleChange}
                 className="mr-3 text-primary focus:ring-primary"
               />
               <CreditCard className="w-4 h-4 mr-2 text-gray-500" />
               <span>Pay on Delivery</span>
-              <span className="ml-auto text-xs text-gray-500">Verified users only</span>
+              <span className="ml-auto text-xs text-gray-500">
+                Verified users only
+              </span>
             </label>
           </div>
         </div>
@@ -294,15 +304,14 @@ const PostErrand = () => {
         <button
           type="submit"
           disabled={isLoading}
-          className="w-full btn-primary text-lg py-4 disabled:opacity-50 disabled:cursor-not-allowed"
-        >
+          className="w-full btn-primary text-lg py-4 disabled:opacity-50 disabled:cursor-not-allowed">
           {isLoading ? (
             <div className="flex items-center justify-center">
               <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin mr-2"></div>
               Posting Request...
             </div>
           ) : (
-            'Submit Request'
+            "Submit Request"
           )}
         </button>
       </form>

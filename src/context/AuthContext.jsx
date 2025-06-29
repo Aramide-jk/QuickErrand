@@ -40,7 +40,6 @@ export const AuthProvider = ({ children }) => {
       isVerified: true,
       role: 'user', // 'user' or 'runner'
       balance: 5000,
-      runnerBalance: 45000, // For runner mode
     };
 
     localStorage.setItem('quickerran_user', JSON.stringify(mockUser));
@@ -57,7 +56,6 @@ export const AuthProvider = ({ children }) => {
       isVerified: false,
       role: 'user',
       balance: 0,
-      runnerBalance: 0,
     };
 
     localStorage.setItem('quickerran_user', JSON.stringify(newUser));

@@ -1,5 +1,6 @@
-/* config */
-/* === Colors === */
+/* config cp */
+
+/* === VARIABLES === */
 :root {
   --color-primary: #43a047;
   --color-primary-light: #66bb6a;
@@ -20,14 +21,32 @@
   --spacing-88: 22rem;
 }
 
-/* === Font === */
+/* === GLOBAL STYLES === */
 body {
   font-family: var(--font-sans);
   background-color: var(--color-background);
+  margin: 0;
+  padding: 0;
 }
 
-/* === Animations === */
+.bg-gradient {
+  background-image: linear-gradient(to right, var(--color-accent-light));
+  /* background-color: var(--color-accent-light); */
+}
 
+.bg-gradient2 {
+  background-image: linear-gradient(
+    to right,
+    var(--color-primary),
+    var(--color-primary-light)
+  );
+}
+
+.bg-background {
+  background-color: var(--color-background);
+}
+
+/* === ANIMATIONS === */
 @keyframes fadeIn {
   0% {
     opacity: 0;
@@ -58,6 +77,7 @@ body {
   }
 }
 
+/* === ANIMATION CLASSES === */
 .fade-in {
   animation: fadeIn 0.5s ease-in-out;
 }
@@ -70,48 +90,34 @@ body {
   animation: bounceGentle 0.6s ease-in-out;
 }
 
-/* style.css */
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+/* === OPTIONAL UTILITIES (LIKE TAILWIND SPACING) === */
+.p-18 {
+  padding: var(--spacing-18);
+}
+.mt-88 {
+  margin-top: var(--spacing-88);
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+/* === EXAMPLE UTILITY COLORS === */
+.text-primary {
+  color: var(--color-primary);
+}
+.bg-primary {
+  background-color: var(--color-primary);
 }
 
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+.text-success {
+  color: var(--color-success);
+}
+.bg-success {
+  background-color: var(--color-success);
 }
 
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.text-error {
+  color: var(--color-error);
+}
+.bg-error {
+  background-color: var(--color-error);
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
+/*  */

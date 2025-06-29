@@ -1,67 +1,76 @@
-import { useState } from 'react';
-import { useAuth } from '../context/AuthContext';
-import BottomNavigation from './BottomNavigation';
-import { Plus, ArrowUpRight, ArrowDownLeft, CreditCard, DollarSign, History, Shield } from 'lucide-react';
+import { useState } from "react";
+import { useAuth } from "../context/AuthContext";
+import BottomNavigation from "./BottomNavigation";
+import {
+  Plus,
+  ArrowUpRight,
+  ArrowDownLeft,
+  CreditCard,
+  DollarSign,
+  History,
+  Shield,
+} from "lucide-react";
+import { FaNairaSign } from "react-icons/fa6";
 
 const WalletScreen = () => {
   const { user } = useAuth();
   const [showAddMoney, setShowAddMoney] = useState(false);
-  const [amount, setAmount] = useState('');
+  const [amount, setAmount] = useState("");
 
   const transactions = [
     {
       id: 1,
-      type: 'debit',
+      type: "debit",
       amount: 3500,
-      description: 'Grocery Shopping - Sarah M.',
-      date: '2024-01-15',
-      status: 'completed',
-      reference: 'TXN001234'
+      description: "Grocery Shopping - Sarah M.",
+      date: "2024-01-15",
+      status: "completed",
+      reference: "TXN001234",
     },
     {
       id: 2,
-      type: 'credit',
+      type: "credit",
       amount: 10000,
-      description: 'Wallet Top-up',
-      date: '2024-01-14',
-      status: 'completed',
-      reference: 'TXN001233'
+      description: "Wallet Top-up",
+      date: "2024-01-14",
+      status: "completed",
+      reference: "TXN001233",
     },
     {
       id: 3,
-      type: 'debit',
+      type: "debit",
       amount: 1200,
-      description: 'Pharmacy Pickup - David O.',
-      date: '2024-01-13',
-      status: 'completed',
-      reference: 'TXN001232'
+      description: "Pharmacy Pickup - David O.",
+      date: "2024-01-13",
+      status: "completed",
+      reference: "TXN001232",
     },
     {
       id: 4,
-      type: 'credit',
+      type: "credit",
       amount: 500,
-      description: 'Refund - Cancelled Order',
-      date: '2024-01-12',
-      status: 'completed',
-      reference: 'TXN001231'
-    }
+      description: "Refund - Cancelled Order",
+      date: "2024-01-12",
+      status: "completed",
+      reference: "TXN001231",
+    },
   ];
 
   const handleAddMoney = () => {
     if (amount && parseFloat(amount) > 0) {
       // Simulate payment processing
       alert(`Adding ₦${parseFloat(amount).toLocaleString()} to wallet...`);
-      setAmount('');
+      setAmount("");
       setShowAddMoney(false);
     }
   };
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', { 
-      month: 'short', 
-      day: 'numeric',
-      year: 'numeric'
+    return date.toLocaleDateString("en-US", {
+      month: "short",
+      day: "numeric",
+      year: "numeric",
     });
   };
 
@@ -76,22 +85,26 @@ const WalletScreen = () => {
 
       <div className="px-6 py-6 space-y-6">
         {/* Balance Card */}
-        <div className="bg-gradient-to-r from-primary to-primary-light rounded-xl p-6 text-white">
+        <div className="bg-gradient2 rounded-xl p-6 text-white">
           <div className="flex items-center justify-between mb-4">
             <div>
               <p className="text-white/80 text-sm">Available Balance</p>
-              <h2 className="text-3xl font-bold">₦{user?.balance?.toLocaleString() || '0'}</h2>
+              <h2 className="text-3xl font-bold flex items-center">
+                <span>
+                  <FaNairaSign className="w-5 h-5 font-bold" />
+                </span>
+                {user?.balance?.toLocaleString() || "0"}
+              </h2>
             </div>
             <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
               <CreditCard className="w-6 h-6" />
             </div>
           </div>
-          
+
           <div className="flex space-x-3">
             <button
               onClick={() => setShowAddMoney(true)}
-              className="flex-1 bg-white text-primary font-medium py-3 rounded-lg hover:bg-gray-50 transition-colors flex items-center justify-center gap-2"
-            >
+              className="flex-1 bg-white text-primary font-medium py-3 rounded-lg hover:bg-gray-100 transition-colors flex items-center justify-center gap-2">
               <Plus className="w-4 h-4" />
               Add Money
             </button>
@@ -110,7 +123,7 @@ const WalletScreen = () => {
             <h3 className="font-medium text-gray-800 text-sm">Escrow</h3>
             <p className="text-xs text-gray-600">Secure payments</p>
           </div>
-          
+
           <div className="bg-white rounded-xl p-4 text-center shadow-sm border border-gray-100">
             <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-2">
               <DollarSign className="w-6 h-6 text-green-600" />
@@ -118,7 +131,7 @@ const WalletScreen = () => {
             <h3 className="font-medium text-gray-800 text-sm">Cashback</h3>
             <p className="text-xs text-gray-600">Earn rewards</p>
           </div>
-          
+
           <div className="bg-white rounded-xl p-4 text-center shadow-sm border border-gray-100">
             <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-2">
               <History className="w-6 h-6 text-purple-600" />
@@ -131,7 +144,9 @@ const WalletScreen = () => {
         {/* Recent Transactions */}
         <div>
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-lg font-semibold text-gray-800">Recent Transactions</h2>
+            <h2 className="text-lg font-semibold text-gray-800">
+              Recent Transactions
+            </h2>
             <button className="text-primary text-sm font-medium hover:text-primary-dark">
               View All
             </button>
@@ -139,15 +154,22 @@ const WalletScreen = () => {
 
           <div className="bg-white rounded-xl border border-gray-100 overflow-hidden">
             {transactions.map((transaction, index) => (
-              <div key={transaction.id} className={`p-4 ${index !== transactions.length - 1 ? 'border-b border-gray-100' : ''}`}>
+              <div
+                key={transaction.id}
+                className={`p-4 ${
+                  index !== transactions.length - 1
+                    ? "border-b border-gray-100"
+                    : ""
+                }`}>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-3">
-                    <div className={`w-10 h-10 rounded-full flex items-center justify-center ${
-                      transaction.type === 'credit' 
-                        ? 'bg-green-100' 
-                        : 'bg-red-100'
-                    }`}>
-                      {transaction.type === 'credit' ? (
+                    <div
+                      className={`w-10 h-10 rounded-full flex items-center justify-center ${
+                        transaction.type === "credit"
+                          ? "bg-green-100"
+                          : "bg-red-100"
+                      }`}>
+                      {transaction.type === "credit" ? (
                         <ArrowDownLeft className="w-5 h-5 text-green-600" />
                       ) : (
                         <ArrowUpRight className="w-5 h-5 text-red-600" />
@@ -165,16 +187,21 @@ const WalletScreen = () => {
                     </div>
                   </div>
                   <div className="text-right">
-                    <div className={`font-semibold ${
-                      transaction.type === 'credit' ? 'text-green-600' : 'text-red-600'
-                    }`}>
-                      {transaction.type === 'credit' ? '+' : '-'}₦{transaction.amount.toLocaleString()}
+                    <div
+                      className={`font-semibold ${
+                        transaction.type === "credit"
+                          ? "text-green-600"
+                          : "text-red-600"
+                      }`}>
+                      {transaction.type === "credit" ? "+" : "-"}₦
+                      {transaction.amount.toLocaleString()}
                     </div>
-                    <span className={`text-xs px-2 py-1 rounded-full ${
-                      transaction.status === 'completed'
-                        ? 'bg-green-100 text-green-700'
-                        : 'bg-yellow-100 text-yellow-700'
-                    }`}>
+                    <span
+                      className={`text-xs px-2 py-1 rounded-full ${
+                        transaction.status === "completed"
+                          ? "bg-green-100 text-green-700"
+                          : "bg-yellow-100 text-yellow-700"
+                      }`}>
                       {transaction.status}
                     </span>
                   </div>
@@ -189,8 +216,10 @@ const WalletScreen = () => {
       {showAddMoney && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-6">
           <div className="bg-white rounded-xl p-6 w-full max-w-sm">
-            <h3 className="text-lg font-semibold text-gray-800 mb-4">Add Money to Wallet</h3>
-            
+            <h3 className="text-lg font-semibold text-gray-800 mb-4">
+              Add Money to Wallet
+            </h3>
+
             <div className="mb-4">
               <label className="block text-sm font-medium text-gray-700 mb-2">
                 Amount (₦)
@@ -213,8 +242,7 @@ const WalletScreen = () => {
                   <button
                     key={quickAmount}
                     onClick={() => setAmount(quickAmount.toString())}
-                    className="py-2 px-3 border border-gray-200 rounded-lg text-sm hover:border-primary hover:text-primary transition-colors"
-                  >
+                    className="py-2 px-3 border border-gray-200 rounded-lg text-sm hover:border-primary hover:text-primary transition-colors">
                     ₦{quickAmount.toLocaleString()}
                   </button>
                 ))}
@@ -224,15 +252,13 @@ const WalletScreen = () => {
             <div className="flex space-x-3">
               <button
                 onClick={() => setShowAddMoney(false)}
-                className="flex-1 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
-              >
+                className="flex-1 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors">
                 Cancel
               </button>
               <button
                 onClick={handleAddMoney}
                 disabled={!amount || parseFloat(amount) <= 0}
-                className="flex-1 btn-primary py-3 disabled:opacity-50 disabled:cursor-not-allowed"
-              >
+                className="flex-1 btn-primary py-3 disabled:opacity-50 disabled:cursor-not-allowed">
                 Add Money
               </button>
             </div>

@@ -67,21 +67,21 @@ const HomeDashboard = () => {
   const nearbyRunners = [
     {
       id: 1,
-      name: "Sarah M.",
+      name: "Aramide jk.",
       rating: 4.9,
       distance: "0.5km",
       available: true,
     },
     {
       id: 2,
-      name: "David O.",
+      name: "Sexy pato.",
       rating: 4.8,
       distance: "0.8km",
       available: true,
     },
     {
       id: 3,
-      name: "Fatima A.",
+      name: "Omotayo b.",
       rating: 4.7,
       distance: "1.2km",
       available: false,
@@ -108,14 +108,14 @@ const HomeDashboard = () => {
   return (
     <div className="min-h-screen bg-background pb-20">
       {/* Header */}
-      <div className="bg-white shadow-sm">
+      <div className="bg-green-700 shadow-sm">
         <div className="px-6 py-4">
           <div className="flex items-center justify-between mb-4">
             <div>
-              <h1 className="text-xl font-semibold text-gray-800">
+              <h1 className="text-xl font-semibold text-gray-50">
                 {getGreeting()}, {user?.name?.split(" ")[0]}!
               </h1>
-              <div className="flex items-center text-gray-600 mt-1">
+              <div className="flex items-center text-gray-50 mt-1">
                 <MapPin className="w-4 h-4 mr-1" />
                 <span className="text-sm">{user?.location}</span>
               </div>
@@ -135,14 +135,14 @@ const HomeDashboard = () => {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="What do you want to get done today?"
-              className="w-full pl-12 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+              className="w-full pl-12 pr-4 py-3 bg-gray-50 border focus:outline border-gray-200 rounded-lg focus:ring-1 focus:ring-white focus:border-transparent"
             />
           </div>
         </div>
       </div>
 
       <div className="px-6 py-6 space-y-8">
-        {/* Categories */}
+        {/* Services */}
         <div>
           <h2 className="text-lg font-semibold text-gray-800 mb-4">Services</h2>
           <div className="grid grid-cols-2 gap-4">
@@ -164,13 +164,14 @@ const HomeDashboard = () => {
         </div>
 
         {/* Quick Action */}
-        <div className="gradient2 rounded-xl p-6 text-white">
+        <div className="bg-gradient2 rounded-xl p-6 text-white">
           <h3 className="text-lg font-semibold mb-2">Need something urgent?</h3>
           <p className="text-white/90 mb-4 text-sm">
             Post a custom request and get it done fast
           </p>
+
           <Link to="/post-errand">
-            <button className="bg-white text-green-600 font-medium px-6 py-2 rounded-lg hover:bg-gray-100 transition-colors flex items-center gap-2">
+            <button className="bg-white text-primary font-medium px-6 py-2 rounded-lg hover:bg-gray-50 transition-colors flex items-center gap-2">
               <Plus className="w-4 h-4" />
               Post New Request
             </button>
